@@ -4,11 +4,11 @@ import { Campaign, Prisma } from '@prisma/client';
 
 @Injectable()
 export class CampaignService {
-
 	constructor(private prismaService: PrismaService) {
-
-		this.prismaService.campaign.count().then((c) => console.log({ campaigns: c }))
-
+		this.prismaService.campaign
+			.count()
+			.then((c) => console.log({ campaigns: c }));
+		this.prismaService.campaign.findMany().then((c) => console.log(c));
 	}
 
 	create(data: Prisma.CampaignCreateInput): Promise<Campaign> {
@@ -22,25 +22,25 @@ export class CampaignService {
 	findOneById(id: string) {
 		return this.prismaService.campaign.findUniqueOrThrow({
 			where: {
-				id
-			}
+				id,
+			},
 		});
 	}
 
 	update(id: string, data: Prisma.CampaignUpdateInput) {
 		return this.prismaService.campaign.update({
 			where: {
-				id
+				id,
 			},
-			data
+			data,
 		});
 	}
 
 	remove(id: string) {
 		return this.prismaService.campaign.delete({
 			where: {
-				id
-			}
+				id,
+			},
 		});
 	}
 }

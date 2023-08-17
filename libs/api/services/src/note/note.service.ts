@@ -7,8 +7,8 @@ export class NoteService {
 
 	constructor(private prismaService: PrismaService) {
 
-		this.prismaService.note.count().then((c) => console.log({ notes: c }))
-
+		// this.prismaService.note.count().then((c) => console.log({ notes: c }))
+    this.prismaService.note.findMany().then((c) => console.log({notes: c}))
 	}
 
 	create(data: Prisma.NoteCreateInput): Promise<Note> {

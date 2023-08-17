@@ -4,11 +4,10 @@ import { AppBlob, Prisma } from '@prisma/client';
 
 @Injectable()
 export class AppBlobService {
-
 	constructor(private prismaService: PrismaService) {
-
-		this.prismaService.appBlob.count().then((c) => console.log({ appBlobs: c }))
-
+		this.prismaService.appBlob
+			.count()
+			.then((c) => console.log({ appBlobs: c }));
 	}
 
 	create(data: Prisma.AppBlobCreateInput): Promise<AppBlob> {
@@ -22,25 +21,25 @@ export class AppBlobService {
 	findOneById(id: string) {
 		return this.prismaService.appBlob.findUniqueOrThrow({
 			where: {
-				id
-			}
+				id,
+			},
 		});
 	}
 
 	update(id: string, data: Prisma.AppBlobUpdateInput) {
 		return this.prismaService.appBlob.update({
 			where: {
-				id
+				id,
 			},
-			data
+			data,
 		});
 	}
 
 	remove(id: string) {
 		return this.prismaService.appBlob.delete({
 			where: {
-				id
-			}
+				id,
+			},
 		});
 	}
 }

@@ -1,21 +1,17 @@
+import { ResponseCampaignDTO, ResponseUserDTO } from '@master-bard/api/dtos';
 import Dexie, { Table } from 'dexie';
 
-interface user {
-  id: string,
-  name: string;
-  hola: string
-}
-
 export class storageDexie extends Dexie {
+	user!: Table<ResponseUserDTO>;
+	campaign!: Table<ResponseCampaignDTO>;
 
-  user!: Table<user>;
-
-  constructor() {
-    super('masterBardDatabase', { allowEmptyDB: true });
-    this.version(1).stores({
-      user: '++id, name'
-    });
-  }
+	constructor() {
+		super('masterBardDatabase', { allowEmptyDB: true });
+		this.version(1).stores({
+			user: '++id, name',
+			campaign: '++id, name',
+		});
+	}
 }
 
 export const db = new storageDexie();

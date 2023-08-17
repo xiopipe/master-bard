@@ -27,7 +27,6 @@
 			"@master-bard/api/interfaces": ["libs/api/interfaces/src/index.ts"],
 			"@master-bard/api/services": ["libs/api/services/src/index.ts"],
 			"@master-bard/api/utils": ["libs/api/utils/src/index.ts"],
-			"@master-bard/dtos": ["libs/dtos/src/index.ts"],
 			"@master-bard/indexeddb-storage": [
 				"libs/indexeddb-storage/src/index.ts"
 			],
